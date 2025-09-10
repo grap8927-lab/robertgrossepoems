@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>All Poems - Robert Grosse Poetry</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">Robert Grosse Poetry</div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="poems.html">Poems</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <section>
+      <h1>All Poems</h1>
+      <div id="poem-list" class="grid"></div>
+    </section>
+
+    <section class="card">
+      <h2>Bundle Deal</h2>
+      <p>Select any 5 poems and receive 10% off the total price.</p>
+      <button class="buy-btn">Choose Your Bundle</button>
+    </section>
+
+    <footer class="footer">
+      <div id="site-footer"></div>
+    </footer>
+  </div>
+
+  <script src="store.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', async () => {
+      const poems = await loadPoems();
+      const list = document.getElementById('poem-list');
+      poems.forEach(p => {
+        list.innerHTML += `
+          <div class="card">
+            <div class="poem-title">${p.title}</div>
+            <div class="poem-excerpt">${p.excerpt}</div>
+            <div class="price">$${p.price.toFixed(2)}</div>
+            <a class="buy-btn" href="poem.html?slug=${p.id}">View & Buy</a>
+          </div>`;
+      });
+      renderFooter();
+    });
+  </script>
+</body>
+</html>
