@@ -1,0 +1,55 @@
+:root{
+  --max-w:1000px;
+  --accent:#23395B;
+  --muted:#6b7280;
+  --bg:#f8fafc;
+  --card:#ffffff;
+  --radius:8px;
+}
+body{
+  font-family: system-ui, sans-serif;
+  background: var(--bg);
+  color:#111827;
+  margin:0;
+}
+.container{
+  max-width:var(--max-w);
+  margin:36px auto;
+  padding:0 18px;
+}
+.header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:18px;
+}
+.brand{font-weight:700;font-size:20px;color:var(--accent)}
+.nav a{margin-left:12px;text-decoration:none;color:var(--muted)}
+.card{
+  background:var(--card);
+  border-radius:var(--radius);
+  padding:16px;
+  margin:12px 0;
+  box-shadow:0 6px 18px rgba(15,23,42,0.06);
+}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
+.poem-title{font-size:18px;font-weight:600;color:var(--accent)}
+.poem-excerpt{color:var(--muted);margin-top:8px;font-size:14px}
+.price{font-weight:700;color:#0b6623}
+.buy-btn{
+  display:inline-block;
+  padding:10px 14px;
+  border-radius:8px;
+  text-decoration:none;
+  background:var(--accent);
+  color:white;
+  margin-top:12px;
+}
+.footer{
+  margin-top:36px;
+  padding:18px;
+  font-size:13px;
+  color:var(--muted);
+  text-align:center;
+  border-top:1px solid rgba(15,23,42,0.04);
+}
