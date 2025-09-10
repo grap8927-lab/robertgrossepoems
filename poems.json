@@ -1,0 +1,23 @@
+[
+  {
+    "id": "poem-001",
+    "title": "The Quiet Morning",
+    "excerpt": "Morning arrives like a small apology, soft and uncertain...",
+    "price": 25.00,
+    "author": "Robert Grosse"
+  },
+  {
+    "id": "poem-002",
+    "title": "Rain on the Window",
+    "excerpt": "The window listens to the rain, patient as an old friend...",
+    "price": 15.00,
+    "author": "Robert Grosse"
+  },
+  {
+    "id": "poem-003",
+    "title": "Empty Streets",
+    "excerpt": "An empty street holds more memory than a crowded square...",
+    "price": 5.00,
+    "author": "Robert Grosse"
+  }
+]
