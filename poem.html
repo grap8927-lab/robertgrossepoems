@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Poem - Robert Grosse Poetry</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">Robert Grosse Poetry</div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="poems.html">Poems</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main id="poem-area" class="card"></main>
+
+    <footer class="footer">
+      <div id="site-footer"></div>
+    </footer>
+  </div>
+
+  <script src="https://www.paypal.com/sdk/js?client-id=YOUR_PAYPAL_CLIENT_ID&currency=USD"></script>
+  <script src="store.js"></script>
+  <script>
+    async function getParam(name){
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+      const slug = await getParam('slug');
+      const poems = await loadPoems();
+      const p = poems.find(x => x.id === slug);
+      if(!p){
+        document.getElementById('poem-area').innerHTML = '<div class="card">Poem not found</div>';
+        return;
+      }
+
+      document.getElementById('poem-area').innerHTML = `
+        <h2 class="poem-title">${p.title}</h2>
+        <div class="small">By ${p.author}</div>
+        <p class="poem-excerpt">${p.excerpt}</p>
+        <div class="price">Price: $${p.price.toFixed(2)}</div>
+        <div id="paypal-button-container"></div>
+      `;
+
+      paypal.Buttons({
+        createOrder: function(data, actions) {
+          return actions.order.create({
+            purchase_units: [{
+              amount: { value: p.price.toFixed(2) },
+              description: `Poem: ${p.title} by ${p.author}`
+            }]
+          });
+        },
+        onApprove: function(data, actions) {
+          return actions.order.capture().then(function(details) {
+            alert('Thank you for your purchase! You’ll receive the full poem by email.');
+          });
+        }
+      }).render('#paypal-button-container');
+
+      renderFooter();
+    });
+  </script>
+</body>
+</html>
