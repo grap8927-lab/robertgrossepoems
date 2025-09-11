@@ -1,0 +1,180 @@
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Georgia', serif;
+  background: linear-gradient(135deg, #0d0d0d, #1a1a1a);
+  color: #f2f2f2;
+  line-height: 1.6;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Header */
+.hero {
+  text-align: center;
+  padding: 2rem 1rem;
+  background: linear-gradient(90deg, #111, #222);
+  border-bottom: 2px solid #444;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  color: #ffd700;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+}
+
+.hero p {
+  font-size: 1.2rem;
+  color: #ccc;
+}
+
+/* Poem Grid */
+.poem-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  padding: 2rem;
+  flex: 1;
+}
+
+.poem-card {
+  background: #1e1e1e;
+  border: 1px solid #333;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.6);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.poem-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 18px rgba(255, 215, 0, 0.4);
+}
+
+.poem-card h3 {
+  color: #ffd700;
+  margin-bottom: 0.5rem;
+  font-size: 1.4rem;
+}
+
+.poem-card p {
+  margin-bottom: 1rem;
+}
+
+/* Price Styling */
+.price {
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 0 0 6px rgba(255, 215, 0, 0.6);
+  margin-bottom: 1rem;
+}
+
+/* Buttons */
+button {
+  background: #ffd700;
+  color: #111;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+button:hover {
+  background: #e6c200;
+  transform: scale(1.05);
+}
+
+/* Modal */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1000;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.modal-content {
+  background: #1e1e1e;
+  margin: auto;
+  padding: 2rem;
+  border: 1px solid #444;
+  width: 90%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.7);
+  animation: fadeIn 0.4s ease;
+}
+
+.modal-content h2 {
+  color: #ffd700;
+}
+
+.modal-content p {
+  margin: 1rem 0;
+}
+
+.modal-content .price {
+  font-size: 1.2rem;
+}
+
+.close {
+  color: #ccc;
+  float: right;
+  font-size: 1.8rem;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover {
+  color: #fff;
+}
+
+/* Delivery note */
+.delivery-note {
+  font-size: 0.9rem;
+  color: #aaa;
+  margin-top: 1rem;
+  font-style: italic;
+}
+
+/* Footer */
+footer {
+  background: #111;
+  text-align: center;
+  padding: 1rem;
+  border-top: 2px solid #333;
+}
+
+footer p {
+  margin-bottom: 0.5rem;
+}
+
+footer a {
+  color: #ffd700;
+  text-decoration: none;
+  margin: 0 0.5rem;
+}
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+/* Animation */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
