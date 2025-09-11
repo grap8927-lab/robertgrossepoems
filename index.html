@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Robert Grosse — Poetry</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="description" content="Robert Grosse — original poems for every mood. Commission, buy, or gift a poem." />
+</head>
+<body>
+  <header class="site-header">
+    <div class="container">
+      <h1>Robert Grosse — Poetry</h1>
+      <p class="tagline">Original poems — available to buy, commission, or gift.</p>
+      <nav class="nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="contact.html" class="nav-link">Contact</a>
+        <a href="disclaimer.html" class="nav-link">Disclaimer</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container">
+    <section id="hero" class="hero">
+      <h2>Handcrafted poems, ready to belong to you.</h2>
+      <p>Browse below — click any poem to read in full and buy it instantly. Each preview shows several lines so you can feel the work before purchase.</p>
+    </section>
+
+    <section id="poems" class="poem-list">
+      <!-- Poems are inserted here by script.js -->
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      <p>© <span id="year"></span> Robert Grosse. All rights reserved.</p>
+      <p class="small">For commercial usage or custom commissions, please contact via the Contact page.</p>
+    </div>
+  </footer>
+
+  <div id="poemModal" class="modal" aria-hidden="true">
+    <div class="modal-content">
+      <button id="modalClose" class="btn btn-close">Close</button>
+      <article id="modalPoem">
+        <!-- poem content injected here -->
+      </article>
+      <div class="modal-actions">
+        <button id="buyNow" class="btn btn-primary">Buy This Poem</button>
+        <button id="giftNow" class="btn btn-alt">Send as Gift</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="store.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>
