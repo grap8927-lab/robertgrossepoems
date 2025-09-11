@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>Poem - Robert Grosse Poetry</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <div class="brand">Robert Grosse Poetry</div>
+      <nav class="nav">
+        <a href="index.html">Home</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="contact.html">Contact</a>
+      </nav>
+    </header>
+
+    <main id="poem-area" class="card">
+      <h2>Loading your poem...</h2>
+    </main>
+
+    <footer class="footer">
+      <p>&copy; 2025 Robert Grosse Poetry. All Rights Reserved.</p>
+    </footer>
+  </div>
+
+  <script>
+    // Helper: get query parameters
+    function getParam(name) {
+      const params = new URLSearchParams(window.location.search);
+      return params.get(name);
+    }
+
+    async function loadPoem() {
+      const id = parseInt(getParam("id"), 10);
+      const code = getParam("code");
+
+      const container = document.getElementById("poem-area");
+
+      if (!id || !code) {
+        container.innerHTML = "<p>Invalid access. Please return to the <a href='index.html'>homepage</a>.</p>";
+        return;
+      }
+
+      try {
+        const response = await fetch("poems.json");
+        const poems = await response.json();
+
+        if (id < 0 || id >= poems.length) {
+          container.innerHTML = "<p>Sorry, this poem was not found.</p>";
+          return;
+        }
+
+        const poem = poems[id];
+
+        container.innerHTML = `
+          <h2 class="poem-title">${poem.title}</h2>
+          <pre class="poem-text">${poem.text}</pre>
+          <p><strong>Price:</strong> $${poem.price}</p>
+          <button id="downloadBtn">Download Poem</button>
+        `;
+
+        // Enable download
+        document.getElementById("downloadBtn").addEventListener("click", () => {
+          const blob = new Blob([poem.text], { type: "text/plain" });
+          const link = document.createElement("a");
+          link.href = URL.createObjectURL(blob);
+          link.download = poem.title.replace(/\s+/g, "_") + ".txt";
+          link.click();
+        });
+
+      } catch (err) {
+        console.error("Error loading poem:", err);
+        container.innerHTML = "<p>Could not load poem. Please try again later.</p>";
+      }
+    }
+
+    document.addEventListener("DOMContentLoaded", loadPoem);
+  </script>
+</body>
+</html>
